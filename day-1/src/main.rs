@@ -5,6 +5,7 @@ fn main() {
     part2();
 }
 
+// Day 1 - Part 1
 fn part1() {
     
     let numbers = input();
@@ -19,8 +20,33 @@ fn part1() {
     }
 }
 
+// Day 1 - Part 2
 fn part2() {
+    let numbers = input();
+    
+    for number_a in &numbers {
+        for number_b in &numbers {
 
+            if number_a == number_b {
+                continue;
+            } 
+            
+            if number_a + number_b > 2020 {
+                continue;
+            }
+
+            let number_c = 2020 - number_a - number_b;
+
+            if number_c == *number_a || number_c == *number_b {
+                continue;
+            }
+
+            if numbers.contains(&number_c) {
+                println!("{} x {} x {} * {}", number_a, number_b, number_c, number_a * number_b * number_c);
+                return;
+            }
+        }
+    }
 }
 
 
